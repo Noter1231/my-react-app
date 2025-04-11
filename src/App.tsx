@@ -4,7 +4,7 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import Layout from './components/layout/Layout';
 import Dashboard from './components/dashboard/Dashboard';
 import Books from './pages/Books';
-import Staff from './pages/Staff';
+import StaffPage from './pages/Staff';
 import Customers from './pages/Customers';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
@@ -32,7 +32,7 @@ function App() {
             } />
             <Route path="staff" element={
               <ProtectedRoute requiredRoles={['admin']}>
-                <Staff />
+                <StaffPage />
               </ProtectedRoute>
             } />
             <Route path="customers" element={
@@ -50,4 +50,5 @@ function App() {
 }
 
 export default App;
+
 

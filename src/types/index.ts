@@ -2,6 +2,7 @@ export interface User {
   id: string;
   name: string;
   role: 'admin' | 'librarian' | 'user';
+  token?: string;
 }
 
 export interface Book {
@@ -13,6 +14,8 @@ export interface Book {
   category: string;
   publishedYear: number;
   description?: string;
+  publisher?: string;
+  imageUrl?: string;
 }
 
 export interface Staff {
@@ -30,6 +33,7 @@ export interface Customer {
   phone: string;
   address: string;
   membershipDate: string;
+  membershipType?: string;
   status: 'active' | 'inactive';
 }
 
@@ -50,19 +54,21 @@ export interface LoginCredentials {
 }
 
 export interface SignUpData {
-  name: string;
+  username: string;
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 export interface ApiResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
-  message?: string;
 }
 
-
-
+export interface Notification {
+  id: string;
+  message: string;
+  type: 'info' | 'warning' | 'error';
+  timestamp: string;
+}
 

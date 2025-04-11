@@ -1,25 +1,12 @@
-import axios, { AxiosInstance } from 'axios';
-import type { Staff } from '../types';
+import { AxiosInstance } from 'axios';
+import type { Staff, ApiResponse } from '../types';
 
-interface ApiResponse<T> {
-  success: boolean;
-  data?: T;
-  error?: string;
-}
-
-class StaffService {
+export class StaffService {
   private api: AxiosInstance;
   private useMockData = true;
 
-  constructor() {
-    this.api = axios.create({
-      baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      },
-      timeout: 10000,
-    });
+  constructor(api: AxiosInstance) {
+    this.api = api;
   }
 
   async getStaff(): Promise<ApiResponse<Staff[]>> {
@@ -30,7 +17,10 @@ class StaffService {
         data: staff
       };
     }
-    // ... rest of the API call
+    return {
+      success: false,
+      error: 'Not implemented'
+    };
   }
 
   async createStaff(staffMember: Omit<Staff, 'id'>): Promise<ApiResponse<Staff>> {
@@ -47,7 +37,10 @@ class StaffService {
         data: newStaff
       };
     }
-    // ... rest of the API call
+    return {
+      success: false,
+      error: 'Not implemented'
+    };
   }
 
   async updateStaff(id: string, staffMember: Staff): Promise<ApiResponse<Staff>> {
@@ -62,26 +55,29 @@ class StaffService {
           data: staffMember
         };
       }
-      return {
-        success: false,
-        error: 'Không tìm thấy nhân viên'
-      };
     }
-    // ... rest of the API call
+    return {
+      success: false,
+      error: 'Staff member not found'
+    };
   }
 
   async deleteStaff(id: string): Promise<ApiResponse<void>> {
     if (this.useMockData) {
       const staff = JSON.parse(localStorage.getItem('staff') || '[]');
-      const filteredStaff = staff.filter((s: Staff) => s.id !== id);
-      localStorage.setItem('staff', JSON.stringify(filteredStaff));
+      const filtered = staff.filter((s: Staff) => s.id !== id);
+      localStorage.setItem('staff', JSON.stringify(filtered));
       return {
         success: true
       };
     }
-    // ... rest of the API call
+    return {
+      success: false,
+      error: 'Not implemented'
+    };
   }
 }
 
-export const staffService = new StaffService();
+export default new StaffService(null as any);
+
 

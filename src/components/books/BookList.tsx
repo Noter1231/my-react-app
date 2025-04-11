@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { apiService } from '../../services/api';
 import type { Book } from '../../types';
 
-const BookList = () => {
+interface BookListProps {
+  onEdit: (book: Book) => void;
+  onDelete: (id: string) => void;
+}
+
+const BookList = ({ onEdit, onDelete }: BookListProps) => {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +19,7 @@ const BookList = () => {
   const fetchBooks = async () => {
     try {
       const response = await apiService.getBooks();
-      if (response.success) {
+      if (response.success && response.data) {
         setBooks(response.data);
       } else {
         setError(response.error || 'Failed to fetch books');
@@ -23,19 +28,6 @@ const BookList = () => {
     } catch (err) {
       setError('Failed to fetch books');
       setLoading(false);
-    }
-  };
-
-  const handleDelete = async (id: string): Promise<void> => {
-    try {
-      const response = await apiService.deleteBook(id);
-      if (response.success) {
-        setBooks(books.filter(book => book.id !== id));
-      } else {
-        setError(response.error || 'Failed to delete book');
-      }
-    } catch (err) {
-      setError('Failed to delete book');
     }
   };
 
@@ -65,8 +57,8 @@ const BookList = () => {
                 <td>{book.isbn}</td>
                 <td>{book.quantity}</td>
                 <td>
-                  <button onClick={() => handleEdit(book)}>Edit</button>
-                  <button onClick={() => handleDelete(book.id)}>Delete</button>
+                  <button onClick={() => onEdit(book)}>Edit</button>
+                  <button onClick={() => onDelete(book.id)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -78,3 +70,4 @@ const BookList = () => {
 };
 
 export default BookList;
+
