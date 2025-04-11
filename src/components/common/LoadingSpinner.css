@@ -1,0 +1,19 @@
+.loading-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
+}
+
+.loading-spinner {
+  text-align: center;
+}
+
+.loading-spinner p {
+  color: #666;
+  margin: 0;
+}
+
+
+

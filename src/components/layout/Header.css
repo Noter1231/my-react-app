@@ -1,0 +1,233 @@
+.header {
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.notifications-wrapper {
+  position: relative;
+}
+
+.notifications {
+  position: relative;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.notifications-popup {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 320px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.notifications-header {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notifications-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.notifications-count {
+  background: #1890ff;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.notifications-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.notification-item:hover {
+  background: #f5f5f5;
+}
+
+.notification-item.warning {
+  border-left: 4px solid #faad14;
+}
+
+.notification-item.info {
+  border-left: 4px solid #1890ff;
+}
+
+.notification-item.error {
+  border-left: 4px solid #ff4d4f;
+}
+
+.notification-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #999;
+  display: block;
+  margin-top: 4px;
+}
+
+.notifications-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.mark-all-read {
+  background: none;
+  border: none;
+  color: #1890ff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+.mark-all-read:hover {
+  text-decoration: underline;
+}
+
+/* Thêm animation cho popup */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notifications-popup {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Đảm bảo popup không bị overflow khỏi viewport */
+@media screen and (max-width: 480px) {
+  .notifications-popup {
+    width: 100vw;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #e3f2fd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar svg {
+  color: #1976d2;
+  font-size: 1.25rem;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.user-role {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .user-details {
+    display: none;
+  }
+
+  .logout-button span {
+    display: none;
+  }
+}
+

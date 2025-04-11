@@ -1,0 +1,152 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.auth-logo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-logo i {
+  font-size: 3rem;
+  color: #2196f3;
+}
+
+.auth-card h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-text {
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 40px 12px 40px;
+  border: 1px solid #e0e6ed;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.form-group i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7f8c8d;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-button:hover {
+  background: #1976d2;
+}
+
+.auth-button:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.auth-link {
+  color: #2196f3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-card {
+    margin: 1rem;
+    padding: 2rem;
+  }
+  
+  .auth-card h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2196f3;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1976d2;
+}
+
+
+
+
+
+
+
+
+
